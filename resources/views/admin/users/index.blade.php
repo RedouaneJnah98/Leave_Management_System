@@ -25,10 +25,6 @@
                         <div class="alert alert-success" id="success-alert">
                             {{ $success }}
                         </div>
-                    @elseif($fail = session('fail'))
-                        <div class="alert alert-danger" id="danger-alert">
-                            {{ $fail }}
-                        </div>
                     @elseif($delete = session('delete'))
                         <div class="alert alert-danger" id="danger-alert">
                             {{ $delete }}
