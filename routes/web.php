@@ -4,7 +4,7 @@ use \App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\AdminController;
 use \App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DesignationController;
-use App\Http\Controllers\Admin\LeaveTypes;
+use App\Http\Controllers\Admin\LeaveTypeController;
 use \App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
@@ -47,7 +47,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('employee', EmployeeController::class);
         Route::resource('department', DepartmentController::class);
         Route::resource('designation', DesignationController::class);
-        Route::resource('leave_type', LeaveTypes::class);
+        Route::resource('leave_type', LeaveTypeController::class);
     });
 });
 
