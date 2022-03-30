@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
+use App\Models\Designation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,9 +18,12 @@ class EmployeeController extends Controller
         return view('admin.employee.index', compact('employees'));
     }
 
-    public function create()
+    public function create(Designation $designation, Department $department)
     {
-        return view('admin.employee.create');
+        $departments = $department->all();
+        $designations = $designation->all();
+
+        return view('admin.employee.create', ['designations' => $designations, 'departments' => $departments]);
     }
 
     public function store(Request $request)
@@ -39,8 +44,15 @@ class EmployeeController extends Controller
             'password' => 'required|min:5|max:30',
         ]);
 
+        // Get Department ID from Form
+//        $departmentID = $user->department()->pluck('id');
+//        $designationID = $user->designation()->pluck('id');
+
+        $image_name = $request->file('profile')->getClientOriginalName();
+        $request->file('profile')->storeAs('public/images', $image_name);
+
         $insertEmployee = User::create([
-            'id_number' => $request->input('is_number'),
+            'id_number' => $request->input('id_number'),
             'first_name' => $request->input('first_name'),
             'middle_name' => $request->input('middle_name'),
             'last_name' => $request->input('last_name'),
@@ -52,6 +64,7 @@ class EmployeeController extends Controller
             'designation' => $request->input('designation'),
             'username' => $request->input('username'),
             'status' => $request->input('status'),
+            'image_profile' => $image_name,
             'password' => Hash::make($request->input('password')),
         ]);
 

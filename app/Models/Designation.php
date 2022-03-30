@@ -12,4 +12,9 @@ class Designation extends Model
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = ['designation_name', 'designation_description'];
+
+    public function employees()
+    {
+        return $this->hasMany(User::class);
+    }
 }

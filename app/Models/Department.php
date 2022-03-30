@@ -13,4 +13,8 @@ class Department extends Model
 
     protected $fillable = ['department_short_name', 'department_name'];
 
+    public function employees()
+    {
+        return $this->hasMany(User::class);
+    }
 }

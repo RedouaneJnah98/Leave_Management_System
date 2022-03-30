@@ -185,16 +185,17 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="country-floating" class="form-label">Deapartment</label>
                                                 <fieldset class="form-group">
+
                                                     <select class="form-select" id="basicSelect" name="department">
                                                         <option disabled selected>Choose Department</option>
-                                                        <option>IT</option>
-                                                        <option>ENGINEERING</option>
-                                                        <option>HR</option>
-                                                        <option>FINANCE</option>
+                                                        @foreach($departments as $department)
+                                                            <option>{{ $department->department_name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </fieldset>
                                             </div>
@@ -205,10 +206,9 @@
                                                 <fieldset class="form-group">
                                                     <select class="form-select" name="designation" id="basicSelect">
                                                         <option disabled selected>Choose Designation</option>
-                                                        <option>IT</option>
-                                                        <option>MANAGER</option>
-                                                        <option>SUPERVISOR</option>
-                                                        <option>ENGINEER</option>
+                                                        @foreach($designations as $designation)
+                                                            <option>{{ $designation->designation_description }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </fieldset>
                                             </div>

@@ -16,6 +16,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'department_id',
+        'designation_id',
         'first_name',
         'middle_name',
         'last_name',
@@ -53,4 +55,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function designation()
+    {
+        return $this->belongsTo(Designation::class);
+    }
 }

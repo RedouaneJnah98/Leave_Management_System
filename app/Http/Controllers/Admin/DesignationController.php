@@ -3,83 +3,64 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Designation;
 use Illuminate\Http\Request;
 
 class DesignationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Designation $designation)
     {
-        //
+        $designations = $designation->all();
+
+        return view('admin.designation.index', compact('designations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.designation.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'designation_name' => 'required|unique:designations',
+            'designation_description' => 'required|unique:designations',
+        ]);
+
+        $insertDesignation = Designation::create($request->all());
+
+        if ($insertDesignation) {
+            return redirect()->route('admin.designation.index')->with('success', "Success! You've added a new Designation");
+        } else {
+            return redirect()->route('admin.designation.create')->with('fail', 'Error! Something went wrong, try again');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Designation $designation)
     {
-        //
+        return view('admin.designation.edit', compact('designation'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $request, Designation $designation)
     {
-        //
+        $request->validate([
+            'designation_name' => 'required|unique:designations',
+            'designation_description' => 'required|unique:designations',
+        ]);
+
+        $updateDesignation = $designation->update($request->all());
+
+        if ($updateDesignation) {
+            return redirect()->route('admin.designation.index')->with('success', "Success! You've changed the Designation");
+        } else {
+            return redirect()->route('admin.designation.edit')->with('fail', 'Error! Something went wrong, try again');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function destroy(Designation $designation)
     {
-        //
-    }
+        $designation->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('admin.designation.index')->with('delete', "Designation deleted!");
     }
 }
