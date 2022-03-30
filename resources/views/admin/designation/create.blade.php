@@ -31,11 +31,7 @@
                                 @csrf
 
                                 <!-- Alert message -->
-                                    @if($success = session('success'))
-                                        <div class="alert alert-success" id="success-alert">
-                                            {{ $success }}
-                                        </div>
-                                    @elseif($fail = session('fail'))
+                                    @if($fail = session('fail'))
                                         <div class="alert alert-danger" id="danger-alert">
                                             {{ $fail }}
                                         </div>

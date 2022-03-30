@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{ route('admin.designation.store') }}" method="post" class="form form-vertical">
+                                <form action="{{ route('admin.department.store') }}" method="post" class="form form-vertical">
                                     @method('POST')
                                     @csrf
 

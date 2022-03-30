@@ -3,81 +3,75 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(User $employee)
     {
-        //
+        $employees = $employee->paginate(10);
+
+        return view('admin.employee.index', compact('employees'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.employee.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_number' => 'required|unique:users',
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
+            'gender' => 'required',
+            'age' => 'required',
+            'email' => 'required|unique:users',
+            'contact' => 'required',
+            'department' => 'required',
+            'designation' => 'required',
+            'username' => 'required|unique:users',
+            'status' => 'required',
+            'password' => 'required|min:5|max:30',
+        ]);
+
+        $insertEmployee = User::create([
+            'id_number' => $request->input('is_number'),
+            'first_name' => $request->input('first_name'),
+            'middle_name' => $request->input('middle_name'),
+            'last_name' => $request->input('last_name'),
+            'gender' => $request->input('gender'),
+            'age' => $request->input('age'),
+            'email' => $request->input('email'),
+            'contact' => $request->input('contact'),
+            'department' => $request->input('department'),
+            'designation' => $request->input('designation'),
+            'username' => $request->input('username'),
+            'status' => $request->input('status'),
+            'password' => Hash::make($request->input('password')),
+        ]);
+
+        if ($insertEmployee) {
+            return redirect()->route('admin.employee.index')->with('success', "Success! You've added a new Employee");
+        } else {
+            return redirect()->route('admin.employee.create')->with('fail', 'Error! Something went wrong, try again');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

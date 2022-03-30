@@ -3,83 +3,64 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Department $department)
     {
-        //
+        $departments = $department->all();
+
+        return view('admin.department.index', compact('departments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.department.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'department_short_name' => 'required|unique:departments',
+            'department_name' => 'required|unique:departments',
+        ]);
+
+        $insertDepartment = Department::create($request->all());
+
+        if ($insertDepartment) {
+            return redirect()->route('admin.department.index')->with('success', "Success! You've add a new Department");
+        } else {
+            return redirect()->route('admin.department.create')->with('fail', 'Error! Something went wrong, try again');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Department $department)
     {
-        //
+        return view('admin.department.edit', compact('department'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $request, Department $department)
     {
-        //
+        $request->validate([
+            'department_short_name' => 'required|unique:departments',
+            'department_name' => 'required|unique:departments',
+        ]);
+
+        $updateDepartment = $department->update($request->all());
+
+        if ($updateDepartment) {
+            return redirect()->route('admin.department.index')->with('success', "Success! You've updated Department");
+        } else {
+            return redirect()->route('admin.department.edit')->with('fail', 'Error! Something went wrong, try again');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function destroy(Department $department)
     {
-        //
-    }
+        $department->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('admin.department.index')->with('delete', "You've deleted Department");
     }
 }

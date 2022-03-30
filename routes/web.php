@@ -1,9 +1,10 @@
 <?php
 
-use \App\Http\Controllers\Admin\EmployeeController;
+//use \App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\AdminController;
 use \App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DesignationController;
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\LeaveTypeController;
 use \App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;

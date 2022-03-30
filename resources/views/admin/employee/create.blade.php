@@ -28,16 +28,12 @@
                                 <form action="{{ route('admin.employee.store') }}" method="post" class="form" enctype="multipart/form-data">
                                     @method('POST')
                                     @csrf
-                                    @if($success = session('success'))
-                                        <div class="alert alert-success">
-                                            {{ $success }}
-                                        </div>
-                                    @elseif($fail = session('fail'))
+
+                                    @if($fail = session('fail'))
                                         <div class="alert alert-danger">
                                             {{ $fail }}
                                         </div>
                                     @endif
-
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
@@ -276,5 +272,5 @@
         <!-- // Basic multiple Column Form section end -->
     </div>
 
-    </div>
+
 @endsection
