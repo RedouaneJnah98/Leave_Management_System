@@ -36,8 +36,6 @@ class UserFactory extends Factory
             'image_profile' => $this->faker->imageUrl(50, 50, 'people', true),
             'status' => $this->faker->randomElement(['Active', 'Not active']),
             'gender' => $this->faker->randomElement(['Male', 'Female']),
-            'department' => $this->faker->randomElement(['IT', 'ENGINEERING', 'HR', 'FINANCE']),
-            'designation' => $this->faker->randomElement(['IT', 'MANAGER', 'SUPERVISOR', 'ENGINEER']),
         ];
     }
 

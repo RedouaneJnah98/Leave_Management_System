@@ -14,8 +14,8 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('designation_id');
-            $table->foreignId('department_id');
+            $table->integer('designation_id');
+            $table->integer('department_id');
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
@@ -28,8 +28,6 @@ return new class extends Migration {
             $table->string('password');
             $table->string('contact');
             $table->string('image_profile');
-            $table->string('department');
-            $table->string('designation');
             $table->string('status')->default('Active');
             $table->rememberToken();
             $table->timestamps();

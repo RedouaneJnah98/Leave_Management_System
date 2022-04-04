@@ -44,14 +44,41 @@ class EmployeeController extends Controller
             'password' => 'required|min:5|max:30',
         ]);
 
-        // Get Department ID from Form
-//        $departmentID = $user->department()->pluck('id');
-//        $designationID = $user->designation()->pluck('id');
-
+        // Image Name
         $image_name = $request->file('profile')->getClientOriginalName();
         $request->file('profile')->storeAs('public/images', $image_name);
 
+        // Get Department ID from Form
+//        $department_id = $request->input('department');
+//        $designation_id = $request->input('designation');
+
+//        $department = Department::find($department_id);
+//        $designation = Designation::find($designation_id);
+//
+//        $employee = new User();
+
+//        $employee->id_number = $request->input('id_number');
+//        $employee->first_name = $request->input('first_name');
+//        $employee->middle_name = $request->input('middle_name');
+//        $employee->last_name = $request->input('last_name');
+//        $employee->gender = $request->input('gender');
+//        $employee->age = $request->input('age');
+//        $employee->email = $request->input('email');
+//        $employee->contact = $request->input('contact');
+//        $employee->username = $request->input('username');
+//        $employee->status = $request->input('status');
+//        $employee->image_profile = $image_name;
+//        $employee->password = Hash::make($request->input('password'));
+//
+//        $department->employees()->save($employee);
+//        $designation->employees()->save($employee);
+
+        // save the relationship between the employee and department&designation models
+
+
         $insertEmployee = User::create([
+            'designation_id' => $request->input('designation'),
+            'department_id' => $request->input('department'),
             'id_number' => $request->input('id_number'),
             'first_name' => $request->input('first_name'),
             'middle_name' => $request->input('middle_name'),
@@ -60,8 +87,6 @@ class EmployeeController extends Controller
             'age' => $request->input('age'),
             'email' => $request->input('email'),
             'contact' => $request->input('contact'),
-            'department' => $request->input('department'),
-            'designation' => $request->input('designation'),
             'username' => $request->input('username'),
             'status' => $request->input('status'),
             'image_profile' => $image_name,

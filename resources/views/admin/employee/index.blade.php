@@ -46,7 +46,7 @@
                                 <td>{{  $employee->id_number }}</td>
                                 <td>{{ $employee->middle_name  }}</td>
                                 <td>{{ $employee->first_name . ' ' . $employee->last_name }}</td>
-                                <td>{{ $employee->department }}</td>
+                                <td>{{ $employee->department->department_name }}</td>
                                 <td>
                                     @if($employee->status === 'Active')
                                         <span class="badge bg-success">{{ $employee->status }}</span>
@@ -58,11 +58,13 @@
                                 <td>
                                     <a href="{{ route('admin.employee.edit', $employee->id) }}" class="text-info"><i class="fa fa-pen"></i></a>
                                     <!-- we use employee id to specify which employee we want to delete if we didn't put the id the destroy method will delete the first employee from DB -->
-                                    <a href="{{ route('admin.employee.destroy', $employee->id) }}" class="text-danger" onclick="event.preventDefault();document.getElementById('form-destroy-{{
+                                    <a href="{{ route('admin.employee.destroy', $employee->id) }}" class="text-danger"
+                                       onclick="event.preventDefault();document.getElementById('form-destroy-{{
                                     $employee->id }}').submit();"><i
                                             class="fa
                                     fa-trash"></i></a>
-                                    <form action="{{ route('admin.employee.destroy', $employee->id) }}" method="post" id="form-destroy-{{ $employee->id }}">
+                                    <form action="{{ route('admin.employee.destroy', $employee->id) }}" method="post"
+                                          id="form-destroy-{{ $employee->id }}">
                                         @method('DELETE')
                                         @csrf
                                     </form>

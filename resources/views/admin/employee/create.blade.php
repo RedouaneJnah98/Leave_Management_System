@@ -42,7 +42,8 @@
                                                     <span class="input-group-text">
                                                         <i class="fa fa-hash"></i>
                                                     </span>
-                                                    <input type="text" class="form-control @error('id_number') is-invalid @enderror" name="id_number" placeholder="id number" id="first-name-icon"
+                                                    <input type="text" class="form-control @error('id_number') is-invalid @enderror" name="id_number"
+                                                           placeholder="id number" id="first-name-icon"
                                                            value="{{ old('id_number') }}">
                                                     @error('id_number')
                                                     <div class="invalid-feedback">
@@ -73,7 +74,8 @@
                                                     <span class="input-group-text">
                                                         <i class="fa fa-user"></i>
                                                     </span>
-                                                    <input type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" placeholder="first name" id="first-name-icon"
+                                                    <input type="text" class="form-control @error('first_name') is-invalid @enderror"
+                                                           name="first_name" placeholder="first name" id="first-name-icon"
                                                            value="{{ old('first_name') }}">
                                                     @error('first_name')
                                                     <div class="invalid-feedback">
@@ -90,7 +92,8 @@
                                                      <span class="input-group-text">
                                                         <i class="fa fa-user"></i>
                                                     </span>
-                                                    <input type="text" class="form-control @error('middle_name') is-invalid @enderror" name="middle_name" placeholder="middle name"
+                                                    <input type="text" class="form-control @error('middle_name') is-invalid @enderror"
+                                                           name="middle_name" placeholder="middle name"
                                                            id="first-name-icon" value="{{ old('middle_name') }}">
                                                     @error('middle_name')
                                                     <div class="invalid-feedback">
@@ -107,7 +110,8 @@
                                                     <span class="input-group-text">
                                                         <i class="fa fa-user"></i>
                                                     </span>
-                                                    <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" placeholder="last name" id="first-name-icon"
+                                                    <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name"
+                                                           placeholder="last name" id="first-name-icon"
                                                            value="{{ old('last_name') }}">
                                                     @error('last_name')
                                                     <div class="invalid-feedback">
@@ -124,7 +128,8 @@
                                                      <span class="input-group-text">
                                                         <i class="fa fa-user"></i>
                                                     </span>
-                                                    <input type="text" class="form-control @error('age') is-invalid @enderror" name="age" placeholder="age" id="first-name-icon" value="{{ old('age')
+                                                    <input type="text" class="form-control @error('age') is-invalid @enderror" name="age"
+                                                           placeholder="age" id="first-name-icon" value="{{ old('age')
                                                     }}">
                                                     @error('age')
                                                     <div class="invalid-feedback">
@@ -141,7 +146,8 @@
                                                     <span class="input-group-text">
                                                         <i class="fa fa-envelope"></i>
                                                     </span>
-                                                    <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="email" id="first-name-icon" value="{{ old
+                                                    <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"
+                                                           placeholder="email" id="first-name-icon" value="{{ old
                                                     ('email') }}">
                                                     @error('email')
                                                     <div class="invalid-feedback">
@@ -158,7 +164,8 @@
                                                     <span class="input-group-text">
                                                         <i class="fa fa-phone"></i>
                                                     </span>
-                                                    <input type="text" class="form-control @error('contact') is-invalid @enderror" name="contact" placeholder="contact" id="first-name-icon"
+                                                    <input type="text" class="form-control @error('contact') is-invalid @enderror" name="contact"
+                                                           placeholder="contact" id="first-name-icon"
                                                            value="{{ old('contact') }}">
                                                     @error('contact')
                                                     <div class="invalid-feedback">
@@ -175,7 +182,8 @@
                                                     <span class="input-group-text">
                                                         <i class="fa fa-user"></i>
                                                     </span>
-                                                    <input type="file" class="form-control @error('profile') is-invalid @enderror" name="profile" placeholder="" id="first-name-icon" value="{{ old
+                                                    <input type="file" class="form-control @error('profile') is-invalid @enderror" name="profile"
+                                                           placeholder="" id="first-name-icon" value="{{ old
                                                     ('profile') }}">
                                                     @error('profile')
                                                     <div class="invalid-feedback">
@@ -192,9 +200,9 @@
                                                 <fieldset class="form-group">
 
                                                     <select class="form-select" id="basicSelect" name="department">
-                                                        <option disabled selected>Choose Department</option>
+                                                        <option disabled selected>Department</option>
                                                         @foreach($departments as $department)
-                                                            <option>{{ $department->department_name }}</option>
+                                                            <option value="{{ $department->id }}">{{ $department->department_name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </fieldset>
@@ -205,9 +213,10 @@
                                                 <label for="company-column" class="form-label">Designation</label>
                                                 <fieldset class="form-group">
                                                     <select class="form-select" name="designation" id="basicSelect">
-                                                        <option disabled selected>Choose Designation</option>
+                                                        <option disabled selected>Designation</option>
                                                         @foreach($designations as $designation)
-                                                            <option>{{ $designation->designation_description }}</option>
+                                                            <option value="{{ $designation->id }}">{{ $designation->designation_description
+                                                            }}</option>
                                                         @endforeach
                                                     </select>
                                                 </fieldset>
@@ -220,7 +229,8 @@
                                                       <span class="input-group-text">
                                                         <i class="fa fa-user"></i>
                                                     </span>
-                                                    <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="username" id="first-name-icon"
+                                                    <input type="text" class="form-control @error('username') is-invalid @enderror" name="username"
+                                                           placeholder="username" id="first-name-icon"
                                                            value="{{ old('username') }}">
                                                     @error('username')
                                                     <div class="invalid-feedback">
@@ -249,7 +259,8 @@
                                                      <span class="input-group-text">
                                                         <i class="fa fa-key"></i>
                                                     </span>
-                                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="passsword" id="first-name-icon">
+                                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                                           name="password" placeholder="passsword" id="first-name-icon">
                                                     @error('password')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
