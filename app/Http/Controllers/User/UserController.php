@@ -18,9 +18,9 @@ class UserController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::guard('web')->attempt($credentials)) {
-            return redirect()->route('user.home');
+            return redirect()->route('employee.home');
         } else {
-            return redirect()->route('user.login')->with('fail', 'Something went wrong, please try again');
+            return redirect()->route('employee.login')->with('fail', 'Something went wrong, please try again');
         }
     }
 

@@ -10,7 +10,7 @@
                         <div class="text-center mb-5">
                             <h3>Employee Sign In</h3>
                         </div>
-                        <form action="{{ route('user.check') }}" method="post">
+                        <form action="{{ route('employee.check') }}" method="post">
                             @csrf
 
                             @if($fail = session('fail'))

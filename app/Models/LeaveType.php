@@ -12,4 +12,9 @@ class LeaveType extends Model
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = ['leave_name', 'leave_description', 'number_days_allowed'];
+
+    public function leaveApplications()
+    {
+        return $this->hasMany(LeaveApplication::class);
+    }
 }

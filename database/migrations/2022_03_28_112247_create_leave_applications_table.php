@@ -14,13 +14,13 @@ return new class extends Migration {
     {
         Schema::create('leave_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('leave_type_id');
-            $table->foreignId('employee_id');
+            $table->integer('leave_type_id');
+            $table->integer('employee_id');
             $table->string('reference_number')->unique();
             $table->date('from_date');
             $table->date('to_date');
-            $table->string('remark');
-            $table->string('leave_status')->default('Pending');
+            $table->string('remark')->default('waiting for approval');
+            $table->string('leave_status')->default('pending');
             $table->timestamps();
         });
     }

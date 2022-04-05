@@ -65,4 +65,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Designation::class);
     }
+
+    public function leaveApplication()
+    {
+        return $this->belongsTo(LeaveApplication::class);
+    }
+
 }

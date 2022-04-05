@@ -20,9 +20,10 @@
                     <a class="dropdown-item" href="update.html"><i data-feather="user"></i> Account</a>
                     <a class="dropdown-item" href="update_password.html"><i data-feather="settings"></i> Settings</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('user.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>
+                    <a class="dropdown-item" href="{{ route('employee.logout') }}"
+                       onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>
                         Logout</a>
-                    <form action="{{ route('user.logout') }}" method="post" id="logout-form">@csrf</form>
+                    <form action="{{ route('employee.logout') }}" method="post" id="logout-form">@csrf</form>
                 </div>
             </li>
         </ul>

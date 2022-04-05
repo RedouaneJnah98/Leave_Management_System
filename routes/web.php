@@ -2,13 +2,14 @@
 
 //use \App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\AdminController;
-use \App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\LeaveApplicationController;
 use App\Http\Controllers\Admin\LeaveTypeController;
-use \App\Http\Controllers\Admin\UsersController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\User\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +22,17 @@ use App\Http\Controllers\User\UserController;
 |
 */
 
-Route::prefix('user')->name('user.')->group(function () {
+Route::prefix('employee')->name('employee.')->group(function () {
     Route::middleware(['guest:web'])->group(function () {
-        Route::view('/login', 'user.login')->name('login');
+        Route::view('/login', 'employee.login')->name('login');
         Route::post('/check', [UserController::class, 'check'])->name('check');
     });
 
     Route::middleware(['auth:web'])->group(function () {
-        Route::view('/home', 'user.home')->name('home');
+        Route::view('/home', 'employee.home')->name('home');
+        Route::get('/application_leave', [LeaveApplicationController::class, 'index'])->name('application_leave');
+        Route::post('/application', [LeaveApplicationController::class, 'application'])->name('application');
+        Route::get('/applications', [LeaveApplicationController::class, 'leave_applications'])->name('applications');
         Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     });
 });
