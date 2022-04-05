@@ -18,6 +18,11 @@
                 </div>
             </div>
         </div>
+        <div class="mt-1 mb-3">
+            <a href="{{ route('admin.users.create') }}">
+                <button class="btn btn-primary btn-sm d-flex align-items-center"><span class="me-2">Add new</span> <i class="fa fa-plus"></i></button>
+            </a>
+        </div>
         <section class="section">
             <div class="card">
                 <div class="card-body">

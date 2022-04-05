@@ -9,12 +9,17 @@
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class='breadcrumb-header'>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html" class="text-success">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}" class="text-success">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Manage Leave Type</li>
                         </ol>
                     </nav>
                 </div>
             </div>
+        </div>
+        <div class="mt-1 mb-3">
+            <a href="{{ route('admin.leave_type.create') }}">
+                <button class="btn btn-primary btn-sm d-flex align-items-center"><span class="me-2">Add new</span> <i class="fa fa-plus"></i></button>
+            </a>
         </div>
         <section class="section">
             <div class="card">

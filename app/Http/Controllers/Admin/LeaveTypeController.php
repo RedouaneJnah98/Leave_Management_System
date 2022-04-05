@@ -46,7 +46,7 @@ class LeaveTypeController extends Controller
     {
         $request->validate([
             '*' => 'required',
-            'leave_name' => 'unique:leave_types',
+            'leave_name' => 'unique:leave_types,leave_name',
         ]);
 
         $updateLeaveType = $leave_type->update($request->all());

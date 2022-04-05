@@ -9,7 +9,7 @@
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class='breadcrumb-header'>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html" class="text-success">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}" class="text-success">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Add Leave Type</li>
                         </ol>
                     </nav>
@@ -43,7 +43,8 @@
                                                         <span class="input-group-text">
                                                             <i class="fa fa-table"></i>
                                                         </span>
-                                                        <input type="text" class="form-control @error('leave_name') is-invalid @enderror" name="leave_name" placeholder="Input leave type">
+                                                        <input type="text" class="form-control @error('leave_name') is-invalid @enderror"
+                                                               name="leave_name" placeholder="Input leave type">
                                                         @error('leave_name')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -59,7 +60,8 @@
                                                         <span class="input-group-text">
                                                             <i class="fa fa-table"></i>
                                                         </span>
-                                                        <input type="text" class="form-control @error('leave_description') is-invalid @enderror" name="leave_description"
+                                                        <input type="text" class="form-control @error('leave_description') is-invalid @enderror"
+                                                               name="leave_description"
                                                                placeholder="Input Description">
                                                         @error('leave_description')
                                                         <div class="invalid-feedback">
@@ -76,7 +78,8 @@
                                                         <span class="input-group-text">
                                                             <i class="fa fa-table"></i>
                                                         </span>
-                                                        <input type="text" class="form-control @error('number_days_allowed') is-invalid @enderror" name="number_days_allowed"
+                                                        <input type="text" class="form-control @error('number_days_allowed') is-invalid @enderror"
+                                                               name="number_days_allowed"
                                                                placeholder="Input days allowed">
                                                         @error('number_days_allowed')
                                                         <div class="invalid-feedback">

@@ -48,34 +48,6 @@ class EmployeeController extends Controller
         $image_name = $request->file('profile')->getClientOriginalName();
         $request->file('profile')->storeAs('public/images', $image_name);
 
-        // Get Department ID from Form
-//        $department_id = $request->input('department');
-//        $designation_id = $request->input('designation');
-
-//        $department = Department::find($department_id);
-//        $designation = Designation::find($designation_id);
-//
-//        $employee = new User();
-
-//        $employee->id_number = $request->input('id_number');
-//        $employee->first_name = $request->input('first_name');
-//        $employee->middle_name = $request->input('middle_name');
-//        $employee->last_name = $request->input('last_name');
-//        $employee->gender = $request->input('gender');
-//        $employee->age = $request->input('age');
-//        $employee->email = $request->input('email');
-//        $employee->contact = $request->input('contact');
-//        $employee->username = $request->input('username');
-//        $employee->status = $request->input('status');
-//        $employee->image_profile = $image_name;
-//        $employee->password = Hash::make($request->input('password'));
-//
-//        $department->employees()->save($employee);
-//        $designation->employees()->save($employee);
-
-        // save the relationship between the employee and department&designation models
-
-
         $insertEmployee = User::create([
             'designation_id' => $request->input('designation'),
             'department_id' => $request->input('department'),
@@ -100,18 +72,46 @@ class EmployeeController extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit(User $employee)
     {
-        //
+        $departments = Department::all();
+        $designations = Designation::all();
+
+        return view('admin.employee.edit', ['employee' => $employee, 'departments' => $departments, 'designations' => $designations]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $employee)
     {
-        //
+        $request->validate([
+            '*' => 'required',
+        ]);
+
+        $updateEmployee = $employee->update([
+            'designation_id' => $request->input('designation'),
+            'department_id' => $request->input('department'),
+            'id_number' => $request->input('id_number'),
+            'first_name' => $request->input('first_name'),
+            'middle_name' => $request->input('middle_name'),
+            'last_name' => $request->input('last_name'),
+            'gender' => $request->input('gender'),
+            'age' => $request->input('age'),
+            'email' => $request->input('email'),
+            'contact' => $request->input('contact'),
+            'username' => $request->input('username'),
+            'status' => $request->input('status'),
+        ]);
+
+        if ($updateEmployee) {
+            return redirect()->route('admin.employee.index')->with('success', "Success! You've updated Employee credentials");
+        } else {
+            return redirect()->route('admin.employee.create')->with('fail', 'Error! Something went wrong, try again');
+        }
     }
 
-    public function destroy($id)
+    public function destroy(User $employee)
     {
-        //
+        $employee->delete();
+
+        return redirect()->route('admin.employee.index')->with('delete', 'Employee delete');
     }
 }

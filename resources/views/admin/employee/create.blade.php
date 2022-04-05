@@ -40,7 +40,7 @@
                                                 <label for="first-name-icon" class="form-label">ID Number</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text">
-                                                        <i class="fa fa-hash"></i>
+                                                        <i class="fa fa-hashtag"></i>
                                                     </span>
                                                     <input type="text" class="form-control @error('id_number') is-invalid @enderror" name="id_number"
                                                            placeholder="id number" id="first-name-icon"
