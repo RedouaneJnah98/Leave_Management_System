@@ -30,6 +30,7 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         @foreach($leave_applications as $row)
                             <tr>
                                 <td>{{ $row->employee->first_name . ' ' . $row->employee->last_name }}</td>
@@ -47,35 +48,13 @@
                                 <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
                             </tr>
                         @endforeach
-                        {{--                        <tr>--}}
-                        {{--                            <td>Juan Dela Cruz</td>--}}
-                        {{--                            <td>Sick Leave</td>--}}
-                        {{--                            <td>2021-11-01</td>--}}
-                        {{--                            <td>--}}
-                        {{--                                <span class="badge bg-info">Pending</span>--}}
-                        {{--                            </td>--}}
-                        {{--                            <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>--}}
-                        {{--                        </tr>--}}
-                        {{--                        <tr>--}}
-                        {{--                            <td>Cardo Dalisay</td>--}}
-                        {{--                            <td>Medical Leave</td>--}}
-                        {{--                            <td>2021-11-01</td>--}}
-                        {{--                            <td>--}}
-                        {{--                                <span class="badge bg-danger">Not Approved</span>--}}
-                        {{--                            </td>--}}
-                        {{--                            <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>--}}
-                        {{--                        </tr>--}}
-                        {{--                        <tr>--}}
-                        {{--                            <td>John Doe</td>--}}
-                        {{--                            <td>Sick Leave</td>--}}
-                        {{--                            <td>2021-11-01</td>--}}
-                        {{--                            <td>--}}
-                        {{--                                <span class="badge bg-success">Approved</span>--}}
-                        {{--                            </td>--}}
-                        {{--                            <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>--}}
-                        {{--                        </tr>--}}
+                        
                         </tbody>
                     </table>
+                    {{-- Pagination --}}
+                    <div class="d-flex justify-content-center flex-column">
+                        {{ $leave_applications->links() }}
+                    </div>
                 </div>
             </div>
 

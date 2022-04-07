@@ -9,7 +9,7 @@ class LeavesController extends Controller
 {
     public function all_leaves()
     {
-        $leave_applications = LeaveApplication::all();
+        $leave_applications = LeaveApplication::paginate(15);
 
         return view('admin.leaves.all', compact('leave_applications'));
     }
