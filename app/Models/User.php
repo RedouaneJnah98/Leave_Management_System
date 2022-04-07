@@ -68,7 +68,6 @@ class User extends Authenticatable
 
     public function leaveApplication()
     {
-        return $this->belongsTo(LeaveApplication::class);
+        return $this->hasMany(LeaveApplication::class);
     }
-
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\LeaveApplicationController;
+use App\Http\Controllers\Admin\LeavesController;
 use App\Http\Controllers\Admin\LeaveTypeController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\User\UserController;
@@ -33,6 +34,7 @@ Route::prefix('employee')->name('employee.')->group(function () {
         Route::get('/application_leave', [LeaveApplicationController::class, 'index'])->name('application_leave');
         Route::post('/application', [LeaveApplicationController::class, 'application'])->name('application');
         Route::get('/applications', [LeaveApplicationController::class, 'leave_applications'])->name('applications');
+
         Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     });
 });
@@ -47,6 +49,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Views
         Route::view('/home', 'admin.home')->name('home');
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
+        Route::get('/all_leaves', [Leavescontroller::class, 'all_leaves'])->name('all_leaves');
         // Resource Controller CRUD
         Route::resource('users', UsersController::class);
         Route::resource('employee', EmployeeController::class);

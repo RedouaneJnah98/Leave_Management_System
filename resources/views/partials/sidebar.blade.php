@@ -75,7 +75,7 @@
                     </a>
                     <ul class="submenu ">
                         <li>
-                            <a href="all_leave.html">All Leaves</a>
+                            <a href="{{ route('admin.all_leaves') }}">All Leaves</a>
                         </li>
                         <li>
                             <a href="pending_leave.html">Pending Leaves</a>

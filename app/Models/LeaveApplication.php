@@ -19,9 +19,9 @@ class LeaveApplication extends Model
         'leave_status'
     ];
 
-    public function employees()
+    public function employee()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function leaveType()
