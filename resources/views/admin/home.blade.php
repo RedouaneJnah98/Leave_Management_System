@@ -17,7 +17,7 @@
                                     </div>
                                     <div>
                                         <h4>Employees</h4>
-                                        <h2 class="h1 mb-0">55</h2>
+                                        <h2 class="h1 mb-0">{{ $employees }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                     </div>
                                     <div>
                                         <h4>Leave</h4>
-                                        <h2 class="h1 mb-0">25</h2>
+                                        <h2 class="h1 mb-0">{{ $leaves }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                     </div>
                                     <div>
                                         <h4>Pending</h4>
-                                        <h2 class="h1 mb-0">12</h2>
+                                        <h2 class="h1 mb-0">{{ $pendings }}</h2>
                                     </div>
                                 </div>
                             </div>

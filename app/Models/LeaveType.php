@@ -13,7 +13,7 @@ class LeaveType extends Model
 
     protected $fillable = ['leave_name', 'leave_description', 'number_days_allowed'];
 
-    public function leaveApplications()
+    public function leaveApplication()
     {
         return $this->hasMany(LeaveApplication::class);
     }

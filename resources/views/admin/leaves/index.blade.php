@@ -45,10 +45,20 @@
                                         <span class="badge bg-danger">Not Approved</span>
                                     @endif
                                 </td>
-                                <td><a href="editDesignation.php"><i class="fa fa-eye text-success"></i></a></td>
+                                <td class="d-flex">
+                                    <a href="{{ route('admin.leaves.edit', $row->id) }}" class="me-2">
+                                        <button class="btn btn-info btn-sm">Edit</button>
+                                    </a>
+                                    <form action="{{ route('admin.leaves.destroy', $row->id) }}" method="post" id="form-destroy">
+                                    @method('DELETE')
+                                    @csrf
+                                    <!-- we should use button -->
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
-                        
+
                         </tbody>
                     </table>
                     {{-- Pagination --}}

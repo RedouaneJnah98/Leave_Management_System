@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LeaveApplicationController;
 use App\Http\Controllers\Admin\LeavesController;
 use App\Http\Controllers\Admin\LeaveTypeController;
@@ -46,16 +47,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::middleware(['auth:admin'])->group(function () {
-        // Views
-        Route::view('/home', 'admin.home')->name('home');
+        Route::get('/home', [HomeController::class, 'index'])->name('home');
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
-        Route::get('/all_leaves', [Leavescontroller::class, 'all_leaves'])->name('all_leaves');
+//        Route::get('/all_leaves', [Leavescontroller::class, 'all_leaves'])->name('all_leaves');
         // Resource Controller CRUD
         Route::resource('users', UsersController::class);
         Route::resource('employee', EmployeeController::class);
         Route::resource('department', DepartmentController::class);
         Route::resource('designation', DesignationController::class);
         Route::resource('leave_type', LeaveTypeController::class);
+        Route::resource('leaves', LeavesController::class);
     });
 });
 
