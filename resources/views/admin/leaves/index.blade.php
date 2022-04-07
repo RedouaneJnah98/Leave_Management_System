@@ -46,6 +46,7 @@
                                     @endif
                                 </td>
                                 <td>
+
                                     <a href="{{ route('admin.leaves.show', $row->id) }}"><i class="fa fa-eye text-success"></i></a>
                                 </td>
                             </tr>
