@@ -15,15 +15,15 @@ class LeavesController extends Controller
         return view('admin.leaves.index', compact('leave_applications'));
     }
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
+//    public function create()
+//    {
+//        //
+//    }
+//
+//    public function store(Request $request)
+//    {
+//        //
+//    }
 
     public function show($id)
     {

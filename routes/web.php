@@ -56,7 +56,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('department', DepartmentController::class);
         Route::resource('designation', DesignationController::class);
         Route::resource('leave_type', LeaveTypeController::class);
-        Route::resource('leaves', LeavesController::class);
+        Route::resource('leaves', LeavesController::class)->parameter('leaves', 'leave');
     });
 });
 
