@@ -103,7 +103,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item ">
-                    <a href="reports.html" class='sidebar-link'>
+                    <a href="{{ route('admin.report') }}" class='sidebar-link'>
                         <i class="fa fa-chart-bar text-success"></i>
                         <span>Reports</span>
                     </a>

@@ -49,7 +49,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
-//        Route::get('/all_leaves', [Leavescontroller::class, 'all_leaves'])->name('all_leaves');
+        Route::get('/report', [HomeController::class, 'reports'])->name('report');
         // Resource Controller CRUD
         Route::resource('users', UsersController::class);
         Route::resource('employee', EmployeeController::class);

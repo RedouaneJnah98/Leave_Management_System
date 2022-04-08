@@ -51,7 +51,7 @@
                                     </div>
                                     <div>
                                         <h4>Approved</h4>
-                                        <h2 class="h1 mb-0">34</h2>
+                                        <h2 class="h1 mb-0">{{ $approved }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                                     </div>
                                     <div>
                                         <h4>Canceled</h4>
-                                        <h2 class="h1 mb-0">15</h2>
+                                        <h2 class="h1 mb-0">{{ $not_approved }}</h2>
                                     </div>
                                 </div>
                             </div>
