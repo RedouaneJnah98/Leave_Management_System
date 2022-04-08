@@ -19,6 +19,11 @@
         <section class="section">
             <div class="card">
                 <div class="card-body">
+                    @if($success = session('success'))
+                        <div class="alert alert-success" id="success-alert">
+                            {{ $success }}
+                        </div>
+                    @endif
                     <table class='table' id="table1">
                         <thead>
                         <tr>
@@ -46,8 +51,7 @@
                                     @endif
                                 </td>
                                 <td>
-
-                                    <a href="{{ route('admin.leaves.show', $row->id) }}"><i class="fa fa-eye text-success"></i></a>
+                                    <a href="{{ route('admin.leaves.edit', $row->id) }}"><i class="fa fa-eye text-success"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -63,4 +67,14 @@
 
         </section>
     </div>
+@endsection
+
+@section('page-js-files')
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+@endsection
+
+@section('page-js-field')
+    <script>
+        $('#success-alert').delay(3000).fadeOut(500);
+    </script>
 @endsection

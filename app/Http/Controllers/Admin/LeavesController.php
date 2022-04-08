@@ -15,29 +15,23 @@ class LeavesController extends Controller
         return view('admin.leaves.index', compact('leave_applications'));
     }
 
-//    public function create()
-//    {
-//        //
-//    }
-//
-//    public function store(Request $request)
-//    {
-//        //
-//    }
-
-    public function show($id)
+    public function edit(LeaveApplication $leave)
     {
-        //
+        return view('admin.leaves.edit', compact('leave'));
     }
 
-    public function edit($id)
+    public function update(Request $request, LeaveApplication $leave)
     {
-        //
-    }
+        $updateLeaveApplication = $leave->update([
+            'leave_status' => $request->input('status'),
+            'remark' => $request->input('remark')
+        ]);
 
-    public function update(Request $request, $id)
-    {
-        //
+        if ($updateLeaveApplication) {
+            return redirect()->route('admin.leaves.index')->with('success', "Success! You changed Leave Application.");
+        } else {
+            return redirect()->route('admin.leaves.edit')->with('fail', 'Error! Something went wrong, try again.');
+        }
     }
 
     public function destroy($id)

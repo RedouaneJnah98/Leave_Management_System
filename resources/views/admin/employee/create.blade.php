@@ -196,10 +196,9 @@
 
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="country-floating" class="form-label">Deapartment</label>
+                                                <label class="form-label">Deapartment</label>
                                                 <fieldset class="form-group">
-
-                                                    <select class="form-select" id="basicSelect" name="department">
+                                                    <select class="form-select" name="department">
                                                         <option disabled selected>Department</option>
                                                         @foreach($departments as $department)
                                                             <option value="{{ $department->id }}">{{ $department->department_name }}</option>
@@ -210,9 +209,9 @@
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="company-column" class="form-label">Designation</label>
+                                                <label class="form-label">Designation</label>
                                                 <fieldset class="form-group">
-                                                    <select class="form-select" name="designation" id="basicSelect">
+                                                    <select class="form-select" name="designation">
                                                         <option disabled selected>Designation</option>
                                                         @foreach($designations as $designation)
                                                             <option value="{{ $designation->id }}">{{ $designation->designation_description
