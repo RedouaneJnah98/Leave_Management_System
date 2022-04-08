@@ -50,6 +50,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
         Route::get('/report', [HomeController::class, 'reports'])->name('report');
+        Route::get('/pending_leaves', [LeavesController::class, 'pending'])->name('pending_leaves');
         // Resource Controller CRUD
         Route::resource('users', UsersController::class);
         Route::resource('employee', EmployeeController::class);

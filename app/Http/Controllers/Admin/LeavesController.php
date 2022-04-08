@@ -15,6 +15,13 @@ class LeavesController extends Controller
         return view('admin.leaves.index', compact('leave_applications'));
     }
 
+    public function pending()
+    {
+        $pending_leaves = LeaveApplication::where('leave_status', 'pending')->get();
+
+        return view('admin.leaves.pending', compact('pending_leaves'));
+    }
+
     public function edit(LeaveApplication $leave)
     {
         return view('admin.leaves.edit', compact('leave'));

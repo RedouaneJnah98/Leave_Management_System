@@ -78,7 +78,7 @@
                             <a href="{{ route('admin.leaves.index') }}">All Leaves</a>
                         </li>
                         <li>
-                            <a href="pending_leave.html">Pending Leaves</a>
+                            <a href="{{ route('admin.pending_leaves') }}">Pending Leaves</a>
                         </li>
                         <li>
                             <a href="approve_leave.html">Approve Leaves</a>
