@@ -26,7 +26,6 @@ class LeaveApplicationFactory extends Factory
         return [
             'leave_type_id' => $this->faker->numberBetween(1, 6),
             'employee_id' => $this->faker->numberBetween(1, 20),
-            'reference_number' => $this->faker->unique()->numerify('QR-#######'),
             'from_date' => $date->format('Y-m-d H:i:s'),
             'to_date' => $date->addWeeks(rand(1, 52))->format('Y-m-d H:i:s'),
         ];

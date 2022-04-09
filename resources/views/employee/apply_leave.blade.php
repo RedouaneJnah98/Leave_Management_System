@@ -43,7 +43,7 @@
                                                     </span>
                                                     <input type="text" class="form-control @error('reference_number') is-invalid @enderror"
                                                            name="reference_number"
-                                                           placeholder="id number">
+                                                           value="{{ auth()->user()->id_number }}" disabled>
                                                     @error('reference_number')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

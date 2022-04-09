@@ -16,7 +16,6 @@ return new class extends Migration {
             $table->id();
             $table->integer('leave_type_id');
             $table->integer('employee_id');
-            $table->string('reference_number')->unique();
             $table->date('from_date');
             $table->date('to_date');
             $table->string('remark')->default('waiting for approval');

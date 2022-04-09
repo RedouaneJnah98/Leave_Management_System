@@ -15,9 +15,11 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
+//        $remember_me = $request->has('remember_me');
+        $remember_me = $request->input('remember_me');
         $credentials = $request->only('username', 'password');
 
-        if (Auth::guard('web')->attempt($credentials)) {
+        if (Auth::guard('web')->attempt($credentials, $remember_me)) {
             return redirect()->route('employee.home');
         } else {
             return redirect()->route('employee.login')->with('fail', 'Something went wrong, please try again');
@@ -28,6 +30,6 @@ class UserController extends Controller
     {
         Auth::guard('web')->logout();
 
-        return redirect('/');
+        return redirect()->route('employee.login');
     }
 }

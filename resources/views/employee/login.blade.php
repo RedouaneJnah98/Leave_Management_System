@@ -52,6 +52,11 @@
                                 </div>
                             </div>
 
+                            <div class="form-check">
+                                <label for="remember_me" class="form-check-label">Remember me</label>
+                                <input type="checkbox" name="remember_me" id="remember_me" class="form-check-input">
+                            </div>
+
                             <div class="clearfix">
                                 <button class="btn btn-primary float-end">Login</button>
                             </div>

@@ -12,7 +12,7 @@
                 <a href="#" data-bs-toggle="dropdown"
                    class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <div class="avatar me-1">
-                        <img src="{{ auth()->user()->image_profile }}" alt="user image">
+                        <img src="{{ asset('storage/images/' . auth()->user()->image_profile ) }}" alt="User profile image">
                     </div>
                     <div class="d-none d-md-block d-lg-inline-block">Hi, {{ auth()->user()->username }}</div>
                 </a>

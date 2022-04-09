@@ -26,7 +26,6 @@ class LeaveApplicationController extends Controller
         $insertApplication = LeaveApplication::create([
             'leave_type_id' => $request->input('leave_type'),
             'employee_id' => auth()->user()->id,
-            'reference_number' => $request->input('reference_number'),
             'from_date' => $request->input('from_date'),
             'to_date' => $request->input('to_date'),
         ]);
