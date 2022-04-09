@@ -51,6 +51,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
         Route::get('/report', [HomeController::class, 'reports'])->name('report');
         Route::get('/pending_leaves', [LeavesController::class, 'pending'])->name('pending_leaves');
+        Route::get('approved_leaves', [LeavesController::class, 'approved'])->name('approved_leaves');
+        Route::get('not_approved_leaves', [LeavesController::class, 'not_approved'])->name('not_approved_leaves');
         // Resource Controller CRUD
         Route::resource('users', UsersController::class);
         Route::resource('employee', EmployeeController::class);

@@ -81,10 +81,10 @@
                             <a href="{{ route('admin.pending_leaves') }}">Pending Leaves</a>
                         </li>
                         <li>
-                            <a href="approve_leave.html">Approve Leaves</a>
+                            <a href="{{ route('admin.approved_leaves') }}">Approve Leaves</a>
                         </li>
                         <li>
-                            <a href="not_approve_leave.html">Not Approve Leaves</a>
+                            <a href="{{ route('admin.not_approved_leaves') }}">Not Approve Leaves</a>
                         </li>
                     </ul>
                 </li>
