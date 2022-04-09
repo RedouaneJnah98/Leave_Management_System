@@ -32,16 +32,9 @@ class LeaveApplicationController extends Controller
         ]);
 
         if ($insertApplication) {
-            return redirect()->route('employee.leave_status')->with('success', "Success! You've applied for a leave");
+            return redirect()->route('employee.applications')->with('success', "Success! You've applied for a leave");
         } else {
             return redirect()->route('employee.application')->with('fail', 'Error! something went wrong, try again');
         }
-    }
-
-    public function leave_applications()
-    {
-        $applications = LeaveApplication::all();
-
-        return view('employee.leave_status', compact('applications'));
     }
 }

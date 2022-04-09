@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\LeaveApplicationController;
 use App\Http\Controllers\Admin\LeavesController;
 use App\Http\Controllers\Admin\LeaveTypeController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\User\EmployeeHomeController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,10 +32,10 @@ Route::prefix('employee')->name('employee.')->group(function () {
     });
 
     Route::middleware(['auth:web'])->group(function () {
-        Route::view('/home', 'employee.home')->name('home');
+        Route::get('/home', [EmployeeHomeController::class, 'index'])->name('home');
         Route::get('/application_leave', [LeaveApplicationController::class, 'index'])->name('application_leave');
         Route::post('/application', [LeaveApplicationController::class, 'application'])->name('application');
-        Route::get('/applications', [LeaveApplicationController::class, 'leave_applications'])->name('applications');
+        Route::get('/applications', [EmployeeHomeController::class, 'leave_applications'])->name('applications');
 
         Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     });

@@ -38,7 +38,15 @@
                                 <td>{{ $application->to_date }}</td>
                                 <td>{{ $application->created_at->diffForHumans() }}</td>
                                 <td>{{ ucwords($application->remark) }}</td>
-                                <td><span class="badge bg-info">{{ ucwords($application->leave_status) }}</span></td>
+                                <td>
+                                    @if($application->leave_status === 'pending')
+                                        <span class="badge bg-info">Pending</span>
+                                    @elseif($application->leave_status === 'approved')
+                                        <span class="badge bg-success">Approved</span>
+                                    @else
+                                        <span class="badge bg-danger">Not Approved</span>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

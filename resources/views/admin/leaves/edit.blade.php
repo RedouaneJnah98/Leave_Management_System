@@ -17,7 +17,6 @@
             </div>
 
         </div>
-
         <!-- // Basic multiple Column Form section start -->
         <section id="multiple-column-form">
             <div class="row match-height">
@@ -179,7 +178,7 @@
                                             <label for="remark" class="form-label">Remark</label>
                                             <fieldset class="form-group">
                                                 <select class="form-select" name="remark" id="remark">
-                                                    <option disabled selected>choose Remark</option>
+                                                    <option disabled selected>choose a Remark</option>
                                                     <option>Waiting for approval...</option>
                                                     <option>Leave has been approved.</option>
                                                     <option>Leave has been rejected.</option>
@@ -200,3 +199,4 @@
         <!-- // Basic multiple Column Form section end -->
     </div>
 @endsection
+
