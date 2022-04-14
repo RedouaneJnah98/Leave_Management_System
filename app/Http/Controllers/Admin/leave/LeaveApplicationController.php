@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\leave;
 
 use App\Http\Controllers\Controller;
 use App\Models\LeaveApplication;
 use App\Models\LeaveType;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use function auth;
+use function redirect;
+use function view;
 
 class LeaveApplicationController extends Controller
 {

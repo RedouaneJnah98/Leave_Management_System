@@ -4,26 +4,16 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\DesignationController;
-use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\employee\EmployeeAccountController;
+use App\Http\Controllers\Admin\employee\EmployeeController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\LeaveApplicationController;
-use App\Http\Controllers\Admin\LeavesController;
-use App\Http\Controllers\Admin\LeaveTypeController;
+use App\Http\Controllers\Admin\leave\LeaveApplicationController;
+use App\Http\Controllers\Admin\leave\LeavesController;
+use App\Http\Controllers\Admin\leave\LeaveTypeController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\User\EmployeeHomeController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::prefix('employee')->name('employee.')->group(function () {
     Route::middleware(['guest:web'])->group(function () {
@@ -36,6 +26,9 @@ Route::prefix('employee')->name('employee.')->group(function () {
         Route::get('/application_leave', [LeaveApplicationController::class, 'index'])->name('application_leave');
         Route::post('/application', [LeaveApplicationController::class, 'application'])->name('application');
         Route::get('/applications', [EmployeeHomeController::class, 'leave_applications'])->name('applications');
+//        Route::get('/account/{id}', [EmployeeAccountController::class, 'index'])->name('account');
+//        Route::put('/account', [EmployeeAccountController::class, 'update'])->name('update');
+        Route::resource('account', EmployeeAccountController::class)->except('show', 'create', 'index', 'store', 'destroy');
 
         Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     });
@@ -55,12 +48,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('approved_leaves', [LeavesController::class, 'approved'])->name('approved_leaves');
         Route::get('not_approved_leaves', [LeavesController::class, 'not_approved'])->name('not_approved_leaves');
         // Resource Controller CRUD
-        Route::resource('users', UsersController::class);
-        Route::resource('employee', EmployeeController::class);
-        Route::resource('department', DepartmentController::class);
-        Route::resource('designation', DesignationController::class);
-        Route::resource('leave_type', LeaveTypeController::class);
-        Route::resource('leaves', LeavesController::class)->parameter('leaves', 'leave');
+        Route::resource('users', UsersController::class)->except('show');
+        Route::resource('employee', EmployeeController::class)->except('show');
+        Route::resource('department', DepartmentController::class)->except('show');
+        Route::resource('designation', DesignationController::class)->except('show');
+        Route::resource('leave_type', LeaveTypeController::class)->except('show');
+        Route::resource('leaves', LeavesController::class)->parameter('leaves', 'leave')->except('show');
     });
 });
 

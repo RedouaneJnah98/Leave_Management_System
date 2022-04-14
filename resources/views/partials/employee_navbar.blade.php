@@ -12,12 +12,12 @@
                 <a href="#" data-bs-toggle="dropdown"
                    class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <div class="avatar me-1">
-                        <img src="{{ asset('storage/images/' . auth()->user()->image_profile ) }}" alt="User profile image">
+                        <img src="{{ asset('storage/' . auth()->user()->image_profile ) }}" alt="User profile image">
                     </div>
                     <div class="d-none d-md-block d-lg-inline-block">Hi, {{ auth()->user()->username }}</div>
                 </a>
                 <div class=" dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="update.html"><i data-feather="user"></i> Account</a>
+                    <a class="dropdown-item" href="{{ route('employee.account.edit', auth()->id()) }}"><i data-feather="user"></i> Account</a>
                     <a class="dropdown-item" href="update_password.html"><i data-feather="settings"></i> Settings</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{{ route('employee.logout') }}"

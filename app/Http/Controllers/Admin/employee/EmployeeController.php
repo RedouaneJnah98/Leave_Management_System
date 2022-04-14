@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\employee;
 
 use App\Http\Controllers\Controller;
 use App\Models\Department;
@@ -8,6 +8,8 @@ use App\Models\Designation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use function redirect;
+use function view;
 
 class EmployeeController extends Controller
 {
