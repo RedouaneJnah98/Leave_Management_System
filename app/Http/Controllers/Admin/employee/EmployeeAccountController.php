@@ -9,18 +9,11 @@ use Illuminate\Validation\Rule;
 
 class EmployeeAccountController extends Controller
 {
-//    public function index(User )
-//    {
-//        $employee_id = auth()->id();
-//        $employee = User::where('id', $employee_id)->first();
-//
-//        return view('employee.account', compact('employee'));
-//    }
-
     public function edit($id)
     {
-//        $employee_id = auth()->id();
-//        $employee = User::where('id', $id)->first();
+        // we can use this approach
+        // $employee = User::where('id', $id)->first();
+        // or thuis below
         $employee = User::find($id)->first();
 
         return view('employee.account.edit', compact('employee'));
