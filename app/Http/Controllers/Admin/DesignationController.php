@@ -23,12 +23,12 @@ class DesignationController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'designation_name' => 'required|unique:designations,designations_name',
+        $attributes = $request->validate([
+            'designation_name' => 'required|unique:designations,designation_name',
             'designation_description' => 'required|unique:designations,designation_description',
         ]);
 
-        $insertDesignation = Designation::create($request->all());
+        $insertDesignation = Designation::create($attributes);
 
         if ($insertDesignation) {
             return redirect()->route('admin.designation.index')->with('success', "Success! You've added a new Designation");
@@ -44,12 +44,12 @@ class DesignationController extends Controller
 
     public function update(Request $request, Designation $designation)
     {
-        $request->validate([
+        $attributes = $request->validate([
             'designation_name' => ['required', Rule::unique('designations', 'designation_name')->ignore($designation->id)],
             'designation_description' => ['required', Rule::unique('designations', 'designation_description')->ignore($designation->id)],
         ]);
 
-        $updateDesignation = $designation->update($request->all());
+        $updateDesignation = $designation->update($attributes);
 
         if ($updateDesignation) {
             return redirect()->route('admin.designation.index')->with('success', "Success! You've changed the Designation");

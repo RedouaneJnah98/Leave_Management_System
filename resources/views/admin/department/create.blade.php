@@ -38,13 +38,13 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="first-name-icon" class="form-label">Department Short Name</label>
+                                                    <label for="department_short_name" class="form-label">Department Short Name</label>
                                                     <div class="input-group">
                                                         <span class="input-group-text">
                                                             <i class="fa fa-table"></i>
                                                         </span>
                                                         <input type="text" class="form-control @error('department_short_name') is-invalid @enderror" name="department_short_name"
-                                                               placeholder="Input Department" id="first-name-icon" value="{{ old('department_short_name') }}">
+                                                               placeholder="Input Department" id="department_short_name" value="{{ old('department_short_name') }}">
                                                         @error('department_short_name')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -55,13 +55,13 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="email-id-icon" class="form-label">Department Name</label>
+                                                    <label for="department_name" class="form-label">Department Name</label>
                                                     <div class="input-group">
                                                         <span class="input-group-text">
                                                             <i class="fa fa-table"></i>
                                                         </span>
                                                         <input type="text" class="form-control @error('department_name') is-invalid @enderror" name="department_name"
-                                                               placeholder="Input Department Name" id="email-id-icon" value="{{ old('department_name') }}">
+                                                               placeholder="Input Department Name" id="department_name" value="{{ old('department_name') }}">
                                                         @error('department_name')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}

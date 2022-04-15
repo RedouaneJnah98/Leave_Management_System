@@ -40,13 +40,13 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label class="form-label">Designation Name</label>
+                                                    <label class="form-label" for="designation_name">Designation Name</label>
                                                     <div class="input-group">
                                                         <span class="input-group-text">
                                                             <i class="fa fa-table"></i>
                                                         </span>
-                                                        <input type="text" name="designation_name" class="form-control @error('designation_name') is-invalid @enderror" placeholder="Input Designation"
-                                                               value="{{ old('designation_name') }}">
+                                                        <input type="text" name="designation_name" id="designation_name" class="form-control @error('designation_name') is-invalid @enderror"
+                                                               placeholder="Input Designation" value="{{ old('designation_name') }}">
                                                         @error('designation_name')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -57,13 +57,14 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label class="form-label">Description</label>
+                                                    <label class="form-label" for="designation_description">Description</label>
                                                     <div class="input-group">
                                                         <span class="input-group-text">
                                                             <i class="fa fa-table"></i>
                                                         </span>
-                                                        <input type="text" name="designation_description" class="form-control @error('designation_description') is-invalid @enderror"
-                                                               placeholder="Input Description" value="{{ old('designation_description') }}">
+                                                        <input type="text" name="designation_description" id="designation_description"
+                                                               class="form-control @error('designation_description') is-invalid @enderror" placeholder="Input Description"
+                                                               value="{{ old('designation_description') }}">
                                                         @error('designation_description')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}

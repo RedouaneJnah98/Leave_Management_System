@@ -16,7 +16,7 @@ class EmployeeController extends Controller
 {
     public function index(User $employee)
     {
-        $employees = $employee->paginate(10);
+        $employees = $employee->paginate();
 
         return view('admin.employee.index', compact('employees'));
     }
@@ -31,7 +31,7 @@ class EmployeeController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $attributes = $request->validate([
             'id_number' => 'required|unique:users,id_number',
             'first_name' => 'required',
             'middle_name' => 'required',
@@ -40,34 +40,18 @@ class EmployeeController extends Controller
             'age' => 'required|numeric',
             'email' => 'required|unique:users,email',
             'contact' => 'required',
-            'department' => 'required',
-            'designation' => 'required',
+            'department_id' => 'required',
+            'designation_id' => 'required',
             'username' => 'required|unique:users,username',
             'status' => 'required',
             'password' => 'required|min:5|max:30',
-            'profile' => 'image'
+            'image_profile' => 'image'
         ]);
 
-        // Image Name
-        $image_name = $request->file('profile')->getClientOriginalName();
-        $request->file('profile')->storeAs('public/images', $image_name);
+        $image_name = $request->file('image_profile')->getClientOriginalName();
+        $attributes['image_profile'] = $request->file('image_profile')->storeAs('public/images', $image_name);
 
-        $insertEmployee = User::create([
-            'designation_id' => $request->input('designation'),
-            'department_id' => $request->input('department'),
-            'id_number' => $request->input('id_number'),
-            'first_name' => $request->input('first_name'),
-            'middle_name' => $request->input('middle_name'),
-            'last_name' => $request->input('last_name'),
-            'gender' => $request->input('gender'),
-            'age' => $request->input('age'),
-            'email' => $request->input('email'),
-            'contact' => $request->input('contact'),
-            'username' => $request->input('username'),
-            'status' => $request->input('status'),
-            'image_profile' => $image_name,
-            'password' => Hash::make($request->input('password')),
-        ]);
+        $insertEmployee = User::create($attributes);
 
         if ($insertEmployee) {
             return redirect()->route('admin.employee.index')->with('success', "Success! You've added a new Employee");

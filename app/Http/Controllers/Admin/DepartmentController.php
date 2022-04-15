@@ -44,12 +44,12 @@ class DepartmentController extends Controller
 
     public function update(Request $request, Department $department)
     {
-        $request->validate([
+        $attributes = $request->validate([
             'department_short_name' => ['required', Rule::unique('departments', 'department_short_name')->ignore($department->id)],
             'department_name' => ['required', Rule::unique('departments', 'department_name')->ignore($department->id)],
         ]);
 
-        $updateDepartment = $department->update($request->all());
+        $updateDepartment = $department->update($attributes);
 
         if ($updateDepartment) {
             return redirect()->route('admin.department.index')->with('success', "Success! You've updated Department");
