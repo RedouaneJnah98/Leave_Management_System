@@ -52,8 +52,8 @@
                                                 <label for="contact" class="form-label">Contact</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                                    <input type="text" class="form-control @error('contact') is-invalid @enderror" id="contact" name="contact" placeholder="contact" value="{{
-                                                    $user->contact }}">
+                                                    <input type="text" class="form-control @error('contact') is-invalid @enderror" id="contact" name="contact" placeholder="contact"
+                                                           value="{{ $user->contact }}">
                                                     @error('contact')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -67,8 +67,8 @@
                                                 <label for="email" class="form-label">Email</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                                                    <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="email" value="{{ $user->email
-                                                    }}">
+                                                    <input type="text" class="form-control @error('email') is-invalid @enderror" id="email"
+                                                           name="email" placeholder="email" value="{{ $user->email }}">
                                                     @error('email')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -82,8 +82,8 @@
                                                 <label for="username" class="form-label">Username</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="username" value="{{
-                                                    $user->username }}">
+                                                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
+                                                           name="username" placeholder="username" value="{{ $user->username }}">
                                                     @error('username')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -96,7 +96,7 @@
                                             <div class="form-group">
                                                 <label class="form-label">Admin Status</label>
                                                 <select class="form-select" name="admin_status">
-                                                    <option selected disabled hidden>{{ $user->admin_status }}</option>
+                                                    <option selected hidden>{{ $user->admin_status }}</option>
                                                     <option>Active</option>
                                                     <option>Not active</option>
                                                 </select>
@@ -104,11 +104,11 @@
                                         </div>
                                         <div class="col-md-4 col-12">
                                             <div class="has-icon-left form-group">
-                                                <label class="form-label">Admin Category</label>
+                                                <label class="form-label" for="category">Admin Category</label>
                                                 <div class="position-relative">
                                                     <fieldset class="form-group">
-                                                        <select class="form-select" name="admin_category">
-                                                            <option selected disabled hidden>{{ $user->admin_category }}</option>
+                                                        <select class="form-select" name="admin_category" id="category">
+                                                            <option selected hidden>{{ $user->admin_category }}</option>
                                                             <option>Admin</option>
                                                             <option>Staff</option>
                                                         </select>

@@ -7,14 +7,15 @@ use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UsersController extends Controller
 {
 
     public function index(Admin $user)
     {
-        // we use Route Model Binding to retreive all the data from DB
-        $admins = $user->paginate(10);
+        // we use Route Model Binding to retrieve all the data from DB
+        $admins = $user->paginate();
 
         return view('admin.users.index', compact('admins'));
     }
@@ -29,8 +30,8 @@ class UsersController extends Controller
         $request->validate([
             'name' => 'required',
             'contact' => 'required',
-            'email' => 'required|unique:admins',
-            'username' => 'required|unique:admins',
+            'email' => 'required|unique:admins,email',
+            'username' => 'required|unique:admins,username',
             'password' => 'required|min:5|max:30',
         ]);
 
@@ -58,11 +59,17 @@ class UsersController extends Controller
 
     public function update(Request $request, Admin $user)
     {
-        $request->validate([
-            '*' => 'required'
+        $attributes = $request->validate([
+            'name' => 'required',
+            'contact' => 'required|numeric',
+            'email' => ['required', 'email', Rule::unique('admins', 'email')->ignore($user->id)],
+            'username' => ['required', Rule::unique('admins', 'username')->ignore($user->id)],
+            'admin_category' => 'required',
+            'admin_status' => 'required'
         ]);
 
-        $updatedAdminCredentials = $user->update($request->all());
+//        dd($attributes);
+        $updatedAdminCredentials = $user->update($attributes);
 
         if ($updatedAdminCredentials) {
             return redirect()->route('admin.users.index')->with('success', 'Success! You updated Admin credentials');

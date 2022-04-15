@@ -200,13 +200,9 @@
                                                 <div class="position-relative">
                                                     <fieldset class="form-group">
                                                         <select class="form-select" name="gender" id="gender">
-                                                            @if(strtolower($employee->gender) === 'male')
-                                                                <option selected>Male</option>
-                                                                <option>Female</option>
-                                                            @elseif(strtolower($employee->gender) === 'female')
-                                                                <option selected>Female</option>
-                                                                <option>Male</option>
-                                                            @endif
+                                                            <option selected hidden>{{ $employee->gender }}</option>
+                                                            <option>Male</option>
+                                                            <option>Female</option>
                                                         </select>
                                                     </fieldset>
                                                 </div>
