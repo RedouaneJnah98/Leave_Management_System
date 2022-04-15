@@ -142,10 +142,10 @@
                                         </div>
                                         <div class="col-md-4 col-12">
                                             <div class="has-icon-left form-group">
-                                                <label class="form-label">Admin Category</label>
+                                                <label class="form-label" for="category">Admin Category</label>
                                                 <div class="position-relative">
                                                     <fieldset class="form-group">
-                                                        <select class="form-select" name="admin_category">
+                                                        <select class="form-select" name="admin_category" id="category">
                                                             <option>Admin</option>
                                                             <option>Staff</option>
                                                         </select>

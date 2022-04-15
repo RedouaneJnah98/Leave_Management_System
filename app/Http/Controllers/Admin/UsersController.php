@@ -27,23 +27,17 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $attributes = $request->validate([
             'name' => 'required',
             'contact' => 'required',
             'email' => 'required|unique:admins,email',
             'username' => 'required|unique:admins,username',
             'password' => 'required|min:5|max:30',
+            'admin_status' => 'required',
+            'admin_category' => 'required',
         ]);
 
-        $insertAdmin = Admin::create([
-            'name' => $request->input('name'),
-            'contact' => $request->input('contact'),
-            'email' => $request->input('email'),
-            'username' => $request->input('username'),
-            'password' => Hash::make($request->input('password')),
-            'admin_status' => $request->input('admin_status'),
-            'admin_category' => $request->input('admin_category'),
-        ]);
+        $insertAdmin = Admin::create($attributes);
 
         if ($insertAdmin) {
             return redirect()->route('admin.users.index')->with('success', 'Success! You added a new Admin');
@@ -68,7 +62,6 @@ class UsersController extends Controller
             'admin_status' => 'required'
         ]);
 
-//        dd($attributes);
         $updatedAdminCredentials = $user->update($attributes);
 
         if ($updatedAdminCredentials) {

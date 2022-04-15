@@ -94,8 +94,8 @@
                                         </div>
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
-                                                <label class="form-label">Admin Status</label>
-                                                <select class="form-select" name="admin_status">
+                                                <label class="form-label" for="status">Admin Status</label>
+                                                <select class="form-select" name="admin_status" id="status">
                                                     <option selected hidden>{{ $user->admin_status }}</option>
                                                     <option>Active</option>
                                                     <option>Not active</option>

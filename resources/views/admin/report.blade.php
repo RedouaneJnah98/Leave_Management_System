@@ -9,13 +9,12 @@
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class='breadcrumb-header'>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html" class="text-success">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.home') }}" class="text-success">Dashboard</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Reports</li>
                         </ol>
                     </nav>
                 </div>
             </div>
-
         </div>
 
         <!-- Basic Vertical form layout section start -->
@@ -46,7 +45,7 @@
         </section>
         <!-- // Basic Vertical form layout section end -->
     </div>
-    </div>
+
 @endsection
 
 <script>
