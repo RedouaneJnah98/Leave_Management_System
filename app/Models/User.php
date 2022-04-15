@@ -16,23 +16,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'department_id',
-        'designation_id',
-        'first_name',
-        'middle_name',
-        'last_name',
         'id_number',
-        'age',
-        'gender',
-        'contact',
-        'department',
-        'designation',
         'username',
-        'contact',
+        'first_name',
+        'last_name',
+        'middle_name',
+        'age',
         'email',
-        'password',
+        'contact',
         'image_profile',
+        'gender',
         'status',
+        'department_id',
+        'designation_id'
     ];
 
     use HasApiTokens, HasFactory, Notifiable;

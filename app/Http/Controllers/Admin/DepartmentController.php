@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class DepartmentController extends Controller
 {
@@ -22,12 +23,12 @@ class DepartmentController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $attributes = $request->validate([
             'department_short_name' => 'required|unique:departments',
             'department_name' => 'required|unique:departments',
         ]);
 
-        $insertDepartment = Department::create($request->all());
+        $insertDepartment = Department::create($attributes);
 
         if ($insertDepartment) {
             return redirect()->route('admin.department.index')->with('success', "Success! You've add a new Department");
@@ -44,8 +45,8 @@ class DepartmentController extends Controller
     public function update(Request $request, Department $department)
     {
         $request->validate([
-            'department_short_name' => 'required|unique:departments',
-            'department_name' => 'required|unique:departments',
+            'department_short_name' => ['required', Rule::unique('departments', 'department_short_name')->ignore($department->id)],
+            'department_name' => ['required', Rule::unique('departments', 'department_name')->ignore($department->id)],
         ]);
 
         $updateDepartment = $department->update($request->all());

@@ -26,8 +26,6 @@ Route::prefix('employee')->name('employee.')->group(function () {
         Route::get('/application_leave', [LeaveApplicationController::class, 'index'])->name('application_leave');
         Route::post('/application', [LeaveApplicationController::class, 'application'])->name('application');
         Route::get('/applications', [EmployeeHomeController::class, 'leave_applications'])->name('applications');
-//        Route::get('/account/{id}', [EmployeeAccountController::class, 'index'])->name('account');
-//        Route::put('/account', [EmployeeAccountController::class, 'update'])->name('update');
         Route::resource('account', EmployeeAccountController::class)->except('show', 'create', 'index', 'store', 'destroy');
 
         Route::post('/logout', [UserController::class, 'logout'])->name('logout');

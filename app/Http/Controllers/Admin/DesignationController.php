@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Designation;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class DesignationController extends Controller
 {
@@ -23,8 +24,8 @@ class DesignationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'designation_name' => 'required|unique:designations',
-            'designation_description' => 'required|unique:designations',
+            'designation_name' => 'required|unique:designations,designations_name',
+            'designation_description' => 'required|unique:designations,designation_description',
         ]);
 
         $insertDesignation = Designation::create($request->all());
@@ -44,8 +45,8 @@ class DesignationController extends Controller
     public function update(Request $request, Designation $designation)
     {
         $request->validate([
-            'designation_name' => 'required|unique:designations',
-            'designation_description' => 'required|unique:designations',
+            'designation_name' => ['required', Rule::unique('designations', 'designation_name')->ignore($designation->id)],
+            'designation_description' => ['required', Rule::unique('designations', 'designation_description')->ignore($designation->id)],
         ]);
 
         $updateDesignation = $designation->update($request->all());
