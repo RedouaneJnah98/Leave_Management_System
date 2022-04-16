@@ -94,9 +94,11 @@
                         <span>Users</span>
                     </a>
                     <ul class="submenu ">
-                        <li>
-                            <a href="{{ route('admin.users.create') }}">Add User</a>
-                        </li>
+                        @can('add_admin')
+                            <li>
+                                <a href="{{ route('admin.users.create') }}">Add User</a>
+                            </li>
+                        @endcan
                         <li>
                             <a href="{{ route('admin.users.index') }}">Manage Users</a>
                         </li>

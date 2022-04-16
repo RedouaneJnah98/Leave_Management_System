@@ -22,6 +22,8 @@ class UsersController extends Controller
 
     public function create()
     {
+        $this->authorize('add_admin');
+
         return view('admin.users.create');
     }
 
@@ -48,6 +50,8 @@ class UsersController extends Controller
 
     public function edit(Admin $user)
     {
+        $this->authorize('edit_admin');
+
         return view('admin.users.edit', compact('user'));
     }
 
@@ -73,6 +77,7 @@ class UsersController extends Controller
 
     public function destroy(Admin $user)
     {
+        $this->authorize('delete_admin');
         $user->delete();
 
         return redirect()->route('admin.users.index')->with('delete', 'Admin deleted!');

@@ -42,7 +42,9 @@
                             <th>Contact</th>
                             <th>Category</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            @if(Gate::any(['edit_admin', 'delete_admin']))
+                                <th>Action</th>
+                            @endif
                         </tr>
                         </thead>
                         <tbody>
@@ -56,17 +58,21 @@
                                 @else
                                     <td><span class="badge bg-danger">{{ $admin->admin_status }}</span></td>
                                 @endif
-                                <td class="d-flex">
-                                    <a href="{{ route('admin.users.edit', $admin->id) }}" class="me-2">
-                                        <button class="btn btn-info btn-sm">Edit</button>
-                                    </a>
-                                    <form action="{{ route('admin.users.destroy', $admin->id) }}" method="post" id="form-destroy">
-                                    @method('DELETE')
-                                    @csrf
-                                    <!-- we should use button -->
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                </td>
+
+                                @if(Gate::any(['edit_admin', 'delete_admin']))
+                                    <td class="d-flex">
+                                        <a href="{{ route('admin.users.edit', $admin->id) }}" class="me-2">
+                                            <button class="btn btn-info btn-sm">Edit</button>
+                                        </a>
+                                        <form action="{{ route('admin.users.destroy', $admin->id) }}" method="post" id="form-destroy">
+                                        @method('DELETE')
+                                        @csrf
+                                        <!-- we should use button -->
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </td>
+                                @endif
+                               
                             </tr>
                         @endforeach
                         </tbody>
