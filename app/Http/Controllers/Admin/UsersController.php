@@ -39,6 +39,9 @@ class UsersController extends Controller
             'admin_category' => 'required',
         ]);
 
+        // hash password
+        $attributes['password'] = Hash::make($attributes['password']);
+
         $insertAdmin = Admin::create($attributes);
 
         if ($insertAdmin) {
